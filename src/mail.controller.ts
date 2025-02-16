@@ -10,7 +10,12 @@ export class MailController {
   async sendRegistration(@Payload() payload: { to: string }) {
     return this.mailService.sendRegistration(payload.to);
   }
-
+  @MessagePattern({ cmd: 'send-test' })
+  async sendTest(@Payload() payload: { to: string }) {
+    console.log('start');
+    this.mailService.sendRegistration(payload.to);
+    return "sent"
+  }
   @MessagePattern({ cmd: 'send-forgetassword' })
   async sendForgetPassword(@Payload() payload: { to: string; token: string }) {
     return this.mailService.sendForgetPassword(payload.to, payload.token);

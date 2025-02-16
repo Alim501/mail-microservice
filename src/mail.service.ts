@@ -24,6 +24,7 @@ export class MailService {
   }
   async sendRegistration(to: string) {
     const text = 'Hello';
+    console.log(text)
     this.sendEmail(to, 'Привет от команды Tenshi!', 'Hello');
   }
 
